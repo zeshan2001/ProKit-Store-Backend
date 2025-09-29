@@ -24,7 +24,7 @@ const addressSchema = new mongoose.Schema(
       type: String, 
     },
 
-    customer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    customer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, },
   },
   { timestamps: true }
 )
