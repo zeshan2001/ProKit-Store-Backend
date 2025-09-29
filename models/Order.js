@@ -1,0 +1,31 @@
+const mongoose = require('mongoose')
+
+const orderSchema = new mongoose.Schema(
+  {
+    paymentMethode: { 
+      type: String, 
+      required: true, 
+      enum: ['creditCard', 'debitCard'], 
+    },
+    status: { 
+      type: String, 
+      required: true, 
+      enum: ['processing', 'delivered'], 
+    },
+    tax: { 
+      type: Number, 
+      required: true, 
+    },
+    totalPrice: { 
+      type: Number, 
+      required: true, 
+    },
+
+    customer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    address: { type: mongoose.Schema.Types.ObjectId, ref: 'Address'},
+  },
+  { timestamps: true },
+)
+
+const Order = mongoose.model('Order', orderSchema)
+module.exports = Order
