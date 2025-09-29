@@ -21,8 +21,8 @@ const orderSchema = new mongoose.Schema(
       required: true, 
     },
 
-    customer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    address: { type: mongoose.Schema.Types.ObjectId, ref: 'Address'},
+    customer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, },
+    address: { type: mongoose.Schema.Types.ObjectId, ref: 'Address', required: true, },
   },
   { timestamps: true },
 )

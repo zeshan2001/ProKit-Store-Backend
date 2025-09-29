@@ -7,8 +7,8 @@ const orderProductSchema = new mongoose.Schema(
       required: true ,
     },
 
-    order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order' },
-    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order', required: true, },
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true, },
   },
   { timestamps: true },
 )
