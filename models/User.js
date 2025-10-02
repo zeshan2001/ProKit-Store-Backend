@@ -6,12 +6,11 @@ const userSchema = new mongoose.Schema(
     name: { type: String },
     email: { type: String, required: true },
     hashedPassword: { type: String, required: true },
-    role: { type: String, enum: ['customer', 'admin'], required: true }
+    role: { type: String, default: "customer", enum: ['customer', 'admin'], required: true }
   },
   {
     timestamps: true,
   }
 )
 
-const User = mongoose.model('User', userSchema)
-module.exports = User
+module.exports = userSchema

@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 // Require Routers
-// const AuthRouter = require('./routes/AuthRouter')
+const AuthRouter = require('./routes/AuthRouter')
 
 const PORT = process.env.PORT || 3000
 
@@ -17,10 +17,10 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.use('/auth', AuthRouter)
+app.use('/auth', AuthRouter)
 
 app.use('/', (req, res) => {
-  res.send(`Connected!`)
+  res.send(`Welcome to the pro kit store!`)
 })
 
 app.listen(PORT, () => {
