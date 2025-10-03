@@ -22,7 +22,7 @@ const createToken = (payload) => {
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.header['authorization'].split('')[1]
+    const token = req.headers['authorization'].split(' ')[1]
     if (token) {
       res.locals.token = token
       return next()
