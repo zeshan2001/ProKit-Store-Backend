@@ -6,11 +6,17 @@ const signUp = async (req, res) => {
     const { email, password } = req.body
     let hashedPassword = await middleware.hashPassword(password)
     let existingUser = await User.findOne({ email })
+    let userInfo = {
+      email,
+      hashedPassword,
+      name: "",
+      image: "",
+    }
 
     if (existingUser) {
       res.status(400).send("A user with that email has already been registered!")
     } else {
-      const user = await User.create({ email, hashedPassword })
+      const user = await User.create(userInfo)
       res.status(200).send({ user })
     }
 
