@@ -33,7 +33,7 @@ const profile_update_put = async (req, res) => {
       }
       )
       if (userInfo) {
-        return res.status(200).send(userInfo)
+        return res.status(200).send({ msg: "User profile updated successfully" })
       } else {
         return res.status(401).send({
           status: 'Error',
