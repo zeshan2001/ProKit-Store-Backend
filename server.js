@@ -7,6 +7,7 @@ const AuthRouter = require('./routes/AuthRouter')
 const ProfileRouter = require('./routes/ProfileRouter')
 const ProductRouter = require('./routes/ProductRouter')
 const FeedbackRouter = require('./routes/FeedbackRouter')
+const AddressRouter = require('./routes/AddressRouter')
 
 const PORT = process.env.PORT || 3000
 
@@ -24,6 +25,7 @@ app.use('/auth', AuthRouter)
 app.use('/profile', ProfileRouter)
 app.use('/products', ProductRouter)
 app.use('/feedbacks', FeedbackRouter)
+app.use('/addresses', AddressRouter)
 
 app.use('/', (req, res) => {
   res.send(`Welcome to the pro kit store!`)
