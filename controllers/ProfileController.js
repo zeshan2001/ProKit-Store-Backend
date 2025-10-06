@@ -23,23 +23,25 @@ const profile_show_get = async (req, res) => {
 
 const profile_update_put = async (req, res) => {
   try {
-    const { image, name } = req.body
-    
-    const userInfo = await User.findByIdAndUpdate(
-      req.params.user_id,
-      {
-        image,
-        name,
-      }
+    const user = await User.findById(req.params.user_id)
+    if (user._id.equals(res.locals.payload.id)) {
+      const { image, name } = req.body
+      await User.findByIdAndUpdate(
+        user._id,
+        {
+          image,
+          name
+        }
       )
-      if (userInfo) {
-        return res.status(200).send(userInfo)
-      } else {
-        return res.status(401).send({
-          status: 'Error',
-          msg: 'Something want wrong while updating profile',
-        })
-      }
+      return res.status(200).send({ msg: "User profile updated successfully" })
+
+    } else {
+      return res.status(401).send({
+              status: 'Error',
+              msg: "you don't have access to  update",
+            })
+    }
+
   } catch (error) {
     res.status(400).send({
       status: 'Error',
