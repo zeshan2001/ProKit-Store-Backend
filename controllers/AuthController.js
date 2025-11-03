@@ -8,7 +8,8 @@ const signUp = async (req, res) => {
     let existingUser = await User.findOne({ email })
     
     if (existingUser) {
-      res.status(400).send("A user with that email has already been registered!")
+      res.status(401).send({ status: 'Error', msg: "A user with that email has already been registered!" })
+      // res.status(400).send("A user with that email has already been registered!")
     } else {
       let userInfo = {
         email,
