@@ -63,6 +63,19 @@ const products_show_get = async (req, res) => {
   }
 }
 
+const products_category_get = async (req, res) => {
+  try {
+    const products = await Product.find({ category: req.params.category })
+    res.status(200).send({ products: products })
+  } catch (error) {
+    res.status(400).send({
+      status: "Error",
+      msg: "An error has occured while fatching a product",
+      error: error.message
+    })
+  }
+}
+
 const products_update_put = async (req, res) => {
   try {
     if (res.locals.payload.role === "admin") {
@@ -126,4 +139,5 @@ module.exports = {
   products_show_get,
   products_update_put,
   products_delete_delete,
+  products_category_get,
 }
